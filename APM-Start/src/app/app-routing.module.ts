@@ -10,7 +10,9 @@ const ROUTES =[
   ];
 @NgModule({
     imports: [
-        RouterModule.forRoot(ROUTES, {useHash: true})
+        RouterModule.forRoot(ROUTES
+            ,{useHash: true}
+            )
     ],
     exports: [RouterModule]
 })
