@@ -22,8 +22,9 @@ import { MessageModule } from './messages/message.module';
     RouterModule.forRoot([
       {path: 'welcome', component: WelcomeComponent},
       {path: '', redirectTo: 'welcome', pathMatch:'full'},
-      {path: '**', component: WelcomeComponent, }
-    ]),
+      {path: '**', component: PageNotFoundComponent, }
+    ],
+    {useHash: true}),
     HttpClientModule,
     InMemoryWebApiModule.forRoot(ProductData, { delay: 1000 }),
     ProductModule,
