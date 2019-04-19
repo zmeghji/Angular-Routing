@@ -11,8 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductDetailComponent implements OnInit{
 
   ngOnInit(): void {
-    const id =  +this.route.snapshot.paramMap.get('id');
-    this.getProduct(id);
+    const resolvedData = this.route.snapshot.data["resolvedData"];
+    this.errorMessage = resolvedData.error;
+    this.onProductRetrieved(resolvedData.product);
+    // const id =  +this.route.snapshot.paramMap.get('id');
+    // this.getProduct(id);
   }
 
   pageTitle = 'Product Detail';
@@ -20,7 +23,7 @@ export class ProductDetailComponent implements OnInit{
   errorMessage: string;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) {
-    console.log(this.route.snapshot.paramMap.get('id'));
+    //console.log(this.route.snapshot.paramMap.get('id'));
    }
 
   getProduct(id: number) {

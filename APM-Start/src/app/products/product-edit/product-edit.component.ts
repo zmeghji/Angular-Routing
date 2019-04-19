@@ -12,13 +12,25 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProductEditComponent implements OnInit{
   ngOnInit(): void {
-    this.route.paramMap.subscribe(
-      params =>{
-        console.log(params.get('id'));
-        const id : number = +this.route.snapshot.paramMap.get('id');
-        this.getProduct(id);
+
+    // const resolvedData = this.route.snapshot.data["resolvedData"];
+    // this.errorMessage = resolvedData.error;
+    // this.onProductRetrieved(resolvedData.product);
+
+    this.route.data.subscribe(
+      data => {
+        const resolvedData = data["resolvedData"];
+        this.errorMessage = resolvedData.error;
+        this.onProductRetrieved(resolvedData.product);
       }
     )
+    // this.route.paramMap.subscribe(
+    //   params =>{
+    //     console.log(params.get('id'));
+    //     const id : number = +this.route.snapshot.paramMap.get('id');
+    //     this.getProduct(id);
+    //   }
+    // )
   }
   pageTitle = 'Product Edit';
   errorMessage: string;
